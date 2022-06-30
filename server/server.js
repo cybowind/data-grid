@@ -4,12 +4,12 @@ const port = process.env.PORT || 5000; // Server on port 5000
 const fs = require('fs')  // Access to filesystem
 
 //////////////////////////////////////////////////////////
-// Avoid cross-domain issues when accessing proxy port 
+// Allow access from client domain
 //////////////////////////////////////////////////////////
 const cors = require('cors');
 const corsOptions ={
     origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
+    credentials:true,           
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
@@ -19,12 +19,11 @@ app.use(cors(corsOptions));
 //////////////////////////////////////////////////////////
 app.use(express.static('../public'));
 
-
 //////////////////////////////////////////////////////////
 // Mock data to be read in from server file
 //////////////////////////////////////////////////////////
 global.mockData = {}  // Global variable to hold the mock data
-const MOCK_DATA_FILE = './data/mock_operation_data_1.json';
+const MOCK_DATA_FILE = './data/mock_operation_data_5000.json';
 
 function loadDataFromFile() {  // Function to start async read of the mock data
   fs.readFile(MOCK_DATA_FILE, 'utf8', (error, data) => {
@@ -48,7 +47,7 @@ loadDataFromFile();                // Read in the mock data
 //////////////////////////////////////////////////////////
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-// create a GET route
+// create a GET route for the mock data
 app.get('/mock_data', (req, res) => { 
   res.send({ 
     express: JSON.stringify(global.mockData) === '{}' 
