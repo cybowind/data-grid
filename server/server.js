@@ -1,7 +1,7 @@
-const express = require('express'); // Use Express
+const express = require('express');
 const app = express(); 
-const port = process.env.PORT || 5000; // Server on port 5000
-const fs = require('fs')  // Access to filesystem
+const port = process.env.PORT || 5000;  // Server on port 5000
+const fs = require('fs')                // Access to filesystem
 
 //////////////////////////////////////////////////////////
 // Allow access from client domain
@@ -22,7 +22,7 @@ app.use(express.static('../public'));
 //////////////////////////////////////////////////////////
 // Mock data to be read in from server file
 //////////////////////////////////////////////////////////
-global.mockData = {}  // Global variable to hold the mock data
+global.mockData = {}
 const MOCK_DATA_FILE = './data/mock_operation_data_5000.json';
 
 function loadDataFromFile() {  // Function to start async read of the mock data

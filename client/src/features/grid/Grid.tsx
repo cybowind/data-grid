@@ -18,10 +18,9 @@ export function Grid() {
       { field: "status", sortable: true, filter: true },
     ]);
 
-  useEffect(() => {
-    console.log("Dispatching...")
-    dispatch(fetchGrids())
-  }, [])
+    useEffect(() => {
+      dispatch(fetchGrids())
+    }, [])
 
     return(
       <div className="ag-theme-alpine" style={{ height: 600, width: 1000 }}>
@@ -29,7 +28,7 @@ export function Grid() {
         rowData={data}
         columnDefs={columnDefs}
         rowSelection='multiple'
-        animateRows={true}
+        animateRows={false}
         />
       </div>
     )

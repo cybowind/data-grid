@@ -12,7 +12,6 @@ export interface Grid {
   status: string
 }
 
-
 /**
  * Grid state
  * @typedef GridState

@@ -5,7 +5,7 @@ import App from './App';
 
 test('renders learn react link', () => {
   render(
-    <Provider store={store}>
+    <Provider store={store}> 
       <App />
     </Provider>
   );
